@@ -1,11 +1,10 @@
 import axios from "axios";
 import React, { useContext, useEffect, useReducer } from "react";
 import { Button } from "react-bootstrap";
-import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
-import LoadingBox from "./LoadingBox";
-import MessageBox from "./MessageBox";
-import { Store } from "./Store";
+import LoadingBox from "../Components/LoadingBox";
+import { Store } from "../Store";
+import MessageBox from "../Components/MessageBox";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -50,9 +49,6 @@ export default function OrderHistoryScreen() {
 
   return (
     <div>
-      <Helmet>
-        <title>Order History</title>
-      </Helmet>
       <h1>Order History</h1>
       {loading ? (
         <LoadingBox></LoadingBox>

@@ -1,9 +1,7 @@
 import axios from "axios";
 import React, { useContext, useReducer, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Helmet } from "react-helmet-async";
-import { toast } from "react-toastify";
-import { Store } from "./Store";
+import { Store } from "../Store";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -49,20 +47,17 @@ export default function ProfileScreen() {
       });
       ctxDispatch({ type: "USER_SIGNIN", payload: data });
       localStorage.setItem("userInfo", JSON.stringify(data));
-      toast.success("Update Successful!");
+      console.log("Update Successful!");
     } catch (err) {
       dispatch({
         type: "FETCH_FAIL",
       });
-      toast.error(err);
+      console.log(err);
     }
   };
 
   return (
     <div className="container">
-      <Helmet>
-        <title>User Profile</title>
-      </Helmet>{" "}
       <h1>User Profile</h1>
       <form onSubmit={submitHandler}>
         <Form.Group controlId="name">
